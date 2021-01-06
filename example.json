@@ -1,0 +1,116 @@
+{
+    "_id": "c-05",
+    "_parentId": "b-05",
+    "_type": "component",
+    "_component": "simpleVideoBranching",
+    "_classes": "",
+    "_layout": "full",
+    "title": "Video Quiz",
+    "displayTitle": "Video Quiz",
+    "_isRandom": true,
+    "_allowFullScreen": false,
+    "_useClosedCaptions": true,
+    "_startLanguage": "en",
+    "_playsinline": true,
+    "_allowRetryOnPass": true,
+    "_playerOptions": {
+        "features": [
+            "playpause",
+            "current",
+            "progress",
+            "duration",
+            "tracks",
+            "volume"
+        ],
+        "toggleCaptionsButtonWhenOnlyOne": true,
+        "alwaysShowControls": true,
+        "hideVideoControlsOnLoad": false
+    },
+    "_initialVideo": {
+        "_media": {
+            "mp4": "course/en/assets/25093fcc89bd3e0fb39607cb7fd2fc7837fd6d18.mp4",
+            "poster": "course/en/assets/36bb95754f9e3bc2bb64e74f84916d9d6a13eb8c.jpg",
+              "cc": [
+                  {
+                      "srclang": "en",
+                      "src": ""
+                  }
+              ],
+              "autoplay": false,
+              "transcript": "transcript"
+        }
+    },
+    "_question": {
+        "background": "course/en/assets/36bb95754f9e3bc2bb64e74f84916d9d6a13eb8c.jpg",
+        "body": "MCQ 1",
+        "_selectable": 1,
+        "_options": [
+            {
+                "text": "Option 1 - Correct",
+                "feedback": "Feedback 1",
+                "_shouldBeSelected": true
+      },
+            {
+              "text": "Option 2 - Incorrect",
+              "feedback": "Feedback 2",
+              "_shouldBeSelected": false
+            },
+            {
+              "text": "Option 3  - Incorrect",
+              "feedback": "Feedback 3",
+              "_shouldBeSelected": false
+            }
+        ]
+    },
+    "_finalVideo": {
+        "_correct": {
+            "_media": {
+              "mp4": "course/en/assets/25093fcc89bd3e0fb39607cb7fd2fc7837fd6d18.mp4",
+              "poster": "course/en/assets/36bb95754f9e3bc2bb64e74f84916d9d6a13eb8c.jpg",
+                "cc": [
+                    {
+                        "srclang": "en",
+                        "src": ""
+                    }
+                ],
+                "autoplay": false,
+                "transcript": "correct transcript"
+          }
+        },
+        "_incorrect": {
+          "_media": {
+              "mp4": "course/en/assets/25093fcc89bd3e0fb39607cb7fd2fc7837fd6d18.mp4",
+              "poster": "course/en/assets/36bb95754f9e3bc2bb64e74f84916d9d6a13eb8c.jpg",
+                "cc": [
+                    {
+                        "srclang": "en",
+                        "src": ""
+                    }
+                ],
+                "autoplay": false,
+                "transcript": "incorrect transcript"
+          }
+        }
+    },
+    "_finalSlide": {
+        "_correct": {
+          "background": "course/en/assets/36bb95754f9e3bc2bb64e74f84916d9d6a13eb8c.jpg",
+          "title": "Results slide",
+          "body": "Body text for correct final slide"
+        },
+        "_incorrect": {
+          "background": "course/en/assets/36bb95754f9e3bc2bb64e74f84916d9d6a13eb8c.jpg",
+          "title": "Results slide",
+          "body": "Body text for incorrect final slide"
+        }
+    },
+    "_transcript": {
+        "_setCompletionOnView": false,
+        "inlineTranscriptButton": "Transcript",
+        "inlineTranscriptCloseButton": "Close Transcript"
+    },
+    "_pageLevelProgress": {
+      "_isEnabled": true,
+      "_isCompletionIndicatorEnabled": false
+    }
+}

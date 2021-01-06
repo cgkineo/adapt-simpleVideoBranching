@@ -1,0 +1,23 @@
+{{import_globals}}
+<div class="svb__results-outer" style="background-image: url({{background}})">
+  <div class="svb__results-inner">
+    <div class="results-slide-icon">
+      <img src="{{icon}}" aria-hidden="true">
+    </div>
+    <div class="svb__widget results-slide-title">
+      {{{title}}}
+    </div>
+    {{#if body}}
+    <div class="svb__widget results-slide-body">
+      {{{body}}}
+    </div>
+    {{/if}}
+    {{#if _showRetry}}
+      <div class="results-slide-retry-container">
+        <button class="btn-text svb__results-retry-btn js-retry-btn">
+            {{{_globals._components._simpleVideoBranching.resultSlideRetryButton}}}
+        </button>
+      </div>
+    {{/if}}
+  </div>
+</div>

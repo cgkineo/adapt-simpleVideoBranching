@@ -1,0 +1,16 @@
+{{import_globals}}
+{{#if _transcript}}
+<button class="aria-label js-skip-to-transcript" tabindex="-1" aria-label="{{_globals._components._media.skipToTranscript}}"></button>
+{{/if}}
+<div class="component__widget svb__widget media__widget">
+  <video preload="none" width="640" height="360" {{#if _playsinline}}playsinline{{/if}} poster="{{_media.poster}}" style="width:100%; height:100%;" controls="controls">
+    {{#if _media.mp4}}
+      <source src="{{_media.mp4}}" type="video/mp4"/>
+    {{/if}}
+    {{#if _useClosedCaptions}}
+      {{#each _media.cc}}
+        <track kind="subtitles" src="{{src}}" type="text/vtt" srclang="{{srclang}}" />
+      {{/each}}
+    {{/if}}
+  </video>
+</div>

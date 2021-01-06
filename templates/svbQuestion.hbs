@@ -1,0 +1,32 @@
+{{import_globals}}
+<div class="svb__questions-outer{{#if _classes}} {{_classes}}{{/if}} js-svb-questions-outer">
+{{! classes attribute added so each quiz question can be targetted specifically for styling - prevent overruns etc}}
+  <div class="svb__questions-inner">
+    <div class="svb__questions-body">{{{compile body}}}</div>
+    <div class="component__widget svb__widget" role="radiogroup">
+      {{#each _options}}
+      <div data-index={{@index}} class="svb__item js-svb-item item-{{@index}}">
+        <input class="svb__item-input js-item-input" id="{{../_id}}-{{@index}}-input" name="{{../_id}}-q{{../_questionIndex}}-item" type="radio" aria-label="{{a11y_normalize text}}"/>
+        <label aria-hidden="true" for="{{../_id}}-{{@index}}-input" class="svb__item-label js-item-label{{#if _isSelected}} is-selected{{/if}}">
+          <div class="svb__item-state">
+            <div class="svb__item-icon svb__answer-icon is-radio">
+              <div class="icon"></div>
+            </div>
+          </div>
+          <div class="svb__item-text">
+            <div class="svb__item-text-inner">
+              {{{text}}}
+            </div>
+          </div>
+        </label>
+      </div>
+      {{/each}}
+    </div>
+
+    <div class="btn__response-container">
+      <button class="btn-text btn__action js-btn-action is-disabled" disabled="true">{{{_buttons._submit.buttonText}}}</button>
+      <button class="btn-text btn__feedback js-btn-feedback is-disabled" disabled="true">{{{_buttons._showFeedback.buttonText}}}</button>
+      <button class="btn-text btn__replay js-btn-replay">{{{_globals._components._simpleVideoBranching.replayVideoButton}}}</button>
+    </div>
+  </div>
+</div>

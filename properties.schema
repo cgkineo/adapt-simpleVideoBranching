@@ -1,0 +1,564 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "id": "http://jsonschema.net",
+  "$ref": "http://localhost/plugins/content/component/model.schema",
+  "globals": {
+    "ariaRegion": {
+      "type": "string",
+      "required": true,
+      "default": "Video scenario",
+      "inputType": "Text",
+      "validators": [],
+      "translatable": true
+    },
+    "ariaRegionVideo": {
+      "type": "string",
+      "required": true,
+      "default": "Watch the video then answer the question that follows. Select the skip to transcript button if you would prefer a transcript of the video.",
+      "inputType": "Text",
+      "validators": [],
+      "translatable": true
+    },
+    "ariaRegionResults": {
+      "type": "string",
+      "required": true,
+      "default": "Read your results below.",
+      "inputType": "Text",
+      "validators": [],
+      "translatable": true
+    },
+    "ariaRegionQuestion": {
+      "type": "string",
+      "required": true,
+      "default": "Answer the following multiple choice question.",
+      "inputType": "Text",
+      "validators": [],
+      "translatable": true
+    },
+    "skipToResultsButton": {
+      "type": "string",
+      "required": true,
+      "default": "Skip to results",
+      "inputType": "Text",
+      "validators": [],
+      "translatable": true
+    },
+    "skipToQuestionButton": {
+      "type": "string",
+      "required": true,
+      "default": "Skip to question",
+      "inputType": "Text",
+      "validators": [],
+      "translatable": true
+    },
+    "replayVideoButton": {
+      "type": "string",
+      "required": true,
+      "default": "Replay Video",
+      "inputType": "Text",
+      "validators": [],
+      "translatable": true
+    },
+    "resultSlideRetryButton": {
+      "type": "string",
+      "required": true,
+      "default": "Retry",
+      "inputType": "Text",
+      "validators": [],
+      "translatable": true
+    },
+    "feedbackPopupTitle": {
+      "type": "string",
+      "required": true,
+      "default": "Feedback",
+      "inputType": "Text",
+      "validators": [],
+      "translatable": true
+    }
+  },
+  "properties": {
+    "_supportedLayout": {
+      "type": "string",
+      "required": true,
+      "enum": ["full-width", "half-width", "both"],
+      "default": "half-width",
+      "editorOnly": true
+    },
+    "_isRandom": {
+      "type": "boolean",
+      "required": false,
+      "default": false,
+      "title": "Randomise answers?",
+      "inputType": "Checkbox",
+      "validators": []
+    },
+    "_allowRetryOnPass": {
+      "type": "boolean",
+      "required": false,
+      "default": false,
+      "title": "Allow learner to retry even if they answered correctly?",
+      "inputType": "Checkbox",
+      "validators": []
+    },
+    "_useClosedCaptions": {
+      "type": "boolean",
+      "required": false,
+      "default": false,
+      "title": "Use Closed Captions",
+      "inputType": "Checkbox",
+      "validators": []
+    },
+    "_playsinline": {
+      "type": "boolean",
+      "required": false,
+      "default": false,
+      "title": "Play videos inline on iOS",
+      "inputType": "Checkbox",
+      "validators": [],
+      "help": "If enabled, videos will play 'inline' on iPhones (the same way they do on iPads). Note that this feature is only available in iOS10 and above."
+    },
+    "_transcript": {
+      "type": "object",
+      "required": false,
+      "title": "Component Transcript Options",
+      "properties": {
+        "_setCompletionOnView": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "title": "Trigger completion?",
+          "inputType": "Checkbox",
+          "validators": [],
+          "help": "Whether to have this component mark as completed when the transcript is shown."
+        },
+        "_inlineTranscript": {
+          "type": "boolean",
+          "required": false,
+          "default": true,
+          "title": "Show Inline",
+          "inputType": "Checkbox",
+          "validators": []
+        },
+        "inlineTranscriptButton": {
+          "type": "string",
+          "required": false,
+          "default": "",
+          "title": "Inline Open Button",
+          "inputType": "Text",
+          "validators": [],
+          "translatable": true
+        },
+        "inlineTranscriptCloseButton": {
+          "type": "string",
+          "required": false,
+          "default": "",
+          "title": "Inline Close Button",
+          "inputType": "Text",
+          "validators": [],
+          "translatable": true
+        }
+      }
+    },
+    "instruction": {
+      "type": "string",
+      "required": false,
+      "default": "",
+      "inputType": "Text",
+      "validators": [],
+      "translatable": true
+    },
+    "_playerOptions": {
+      "type": "object",
+      "default": {
+        "features": [
+            "playpause",
+            "current",
+            "progress",
+            "duration",
+            "tracks",
+            "volume"
+        ],
+        "toggleCaptionsButtonWhenOnlyOne": true,
+        "alwaysShowControls": true,
+        "hideVideoControlsOnLoad": false
+      },
+      "title": "Player Options",
+      "inputType": {
+        "type": "CodeEditor",
+        "mode": "json"
+      },
+      "validators": [],
+      "help": "Optional object that can be used to customize the player"
+    },
+    "_initialVideo": {
+      "type": "object",
+      "required": true,
+      "title": "Initial Video",
+      "help": "The settings for the initial video",
+      "properties": {
+        "_media": {
+          "type": "object",
+          "required": true,
+          "title": "Media",
+          "properties": {
+            "mp4": {
+              "type": "string",
+              "required": false,
+              "default": "",
+              "title": "MP4 Link",
+              "inputType": "Asset:video",
+              "validators": [],
+              "help": "Link to an MP4 video"
+            },
+            "poster": {
+              "type": "string",
+              "required": false,
+              "default": "",
+              "title": "Poster Link",
+              "inputType": "Asset:image",
+              "validators": [],
+              "help": "Image displayed before the video is played"
+            },
+            "cc": {
+              "type": "array",
+              "required": false,
+              "title": "Closed Captions",
+              "items": {
+                "type": "object",
+                "required": false,
+                "properties": {
+                  "srclang": {
+                    "type": "string",
+                    "required": false,
+                    "default": "",
+                    "title": "Language Code",
+                    "inputType": "Text",
+                    "validators": ["required"]
+                  },
+                  "src": {
+                    "type": "string",
+                    "required": false,
+                    "default": "",
+                    "title": "Caption File",
+                    "inputType": "Asset:other",
+                    "validators": ["required"]
+                  }
+                }
+              }
+            },
+            "transcript": {
+              "type": "string",
+              "required": false,
+              "default": "",
+              "title": "Inline Transcript",
+              "inputType": "TextArea",
+              "validators": [],
+              "help": "Optional text appears below the video",
+              "translatable": true
+            }
+          }
+        }
+      }
+    },
+    "_question": {
+      "type": "object",
+      "required": true,
+      "title": "Question",
+      "properties": {
+        "background": {
+          "type": "string",
+          "required": false,
+          "default": "",
+          "title": "Background Image",
+          "inputType": "Asset:image",
+          "validators": [],
+          "help": ""
+        },
+        "body": {
+          "type": "string",
+          "required": false,
+          "default": "",
+          "title": "Question Body",
+          "inputType": "Text",
+          "validators": [],
+          "help": "",
+          "translatable": true
+        },
+        "_options": {
+          "type": "array",
+          "required": true,
+          "title": "Answers",
+          "help": "The possible answers available to the learner",
+          "items": {
+            "type": "object",
+            "required": true,
+            "properties": {
+              "text": {
+                "type": "string",
+                "required": true,
+                "default": "",
+                "title": "Answer Text",
+                "inputType": "Text",
+                "validators": ["required"],
+                "help": "This text will display as the answer text",
+                "translatable": true
+              },
+              "_shouldBeSelected": {
+                "type": "boolean",
+                "required": true,
+                "default": false,
+                "title": "Correct answer?",
+                "inputType": "Checkbox",
+                "validators": []
+              },
+              "feedback": {
+                "type": "string",
+                "required": true,
+                "default": "",
+                "title": "Answer-specific feedback",
+                "inputType": "TextArea",
+                "validators": [],
+                "translatable": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "_finalVideo": {
+      "type": "object",
+      "required": true,
+      "title": "Final Video",
+      "help": "The details for the final video",
+      "properties": {
+        "_isEnabled": {
+          "type": "boolean",
+          "required": true,
+          "default": true,
+          "title": "Show final video in this component?",
+          "inputType": "Checkbox",
+          "validators": [],
+          "help": "Controls whether you want to show the final video & results in this component - or further down the page using the Video Outcome component."
+        },
+        "_correct": {
+          "type": "object",
+          "required": true,
+          "title": "Final video for correct answer",
+          "properties": {
+            "_media": {
+              "type": "object",
+              "required": true,
+              "title": "Media",
+              "properties": {
+                "mp4": {
+                  "type": "string",
+                  "required": false,
+                  "default": "",
+                  "title": "MP4 Link",
+                  "inputType": "Asset:video",
+                  "validators": [],
+                  "help": "Link to an MP4 video"
+                },
+                "cc": {
+                  "type": "array",
+                  "required": false,
+                  "title": "Closed Captions",
+                  "items": {
+                    "type": "object",
+                    "required": false,
+                    "properties": {
+                      "srclang": {
+                        "type": "string",
+                        "required": false,
+                        "default": "",
+                        "title": "Language Code",
+                        "inputType": "Text",
+                        "validators": ["required"]
+                      },
+                      "src": {
+                        "type": "string",
+                        "required": false,
+                        "default": "",
+                        "title": "Caption File",
+                        "inputType": "Asset:other",
+                        "validators": ["required"]
+                      }
+                    }
+                  }
+                },
+                "transcript": {
+                  "type": "string",
+                  "required": false,
+                  "default": "",
+                  "title": "Inline Transcript",
+                  "inputType": "TextArea",
+                  "validators": [],
+                  "help": "Optional text appears below the video",
+                  "translatable": true
+                }
+              }
+            }
+          }
+        },
+        "_incorrect": {
+          "type": "object",
+          "required": true,
+          "title": "Final video for incorrect answer",
+          "properties": {
+            "_media": {
+              "type": "object",
+              "required": true,
+              "title": "Media",
+              "properties": {
+                "mp4": {
+                  "type": "string",
+                  "required": false,
+                  "default": "",
+                  "title": "MP4 Link",
+                  "inputType": "Asset:video",
+                  "validators": [],
+                  "help": "Link to an MP4 video"
+                },
+                "cc": {
+                  "type": "array",
+                  "required": false,
+                  "title": "Closed Captions",
+                  "items": {
+                    "type": "object",
+                    "required": false,
+                    "properties": {
+                      "srclang": {
+                        "type": "string",
+                        "required": false,
+                        "default": "",
+                        "title": "Language Code",
+                        "inputType": "Text",
+                        "validators": ["required"]
+                      },
+                      "src": {
+                        "type": "string",
+                        "required": false,
+                        "default": "",
+                        "title": "Caption File",
+                        "inputType": "Asset:other",
+                        "validators": ["required"]
+                      }
+                    }
+                  }
+                },
+                "transcript": {
+                  "type": "string",
+                  "required": false,
+                  "default": "",
+                  "title": "Inline Transcript",
+                  "inputType": "TextArea",
+                  "validators": [],
+                  "help": "Optional text appears below the video",
+                  "translatable": true
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "_finalSlide": {
+      "type": "object",
+      "required": true,
+      "title": "Final Slide",
+      "properties": {
+        "_correct": {
+          "type": "object",
+          "title": "Final slide for correct answer",
+          "required": true,
+          "properties": {
+            "background": {
+              "type": "string",
+              "required": false,
+              "default": "",
+              "title": "Final slide background image for correct answer",
+              "inputType": "Asset:image",
+              "validators": [],
+              "help": ""
+            },
+            "icon": {
+              "type": "string",
+              "required": false,
+              "default": "",
+              "title": "Final slide icon for correct answer",
+              "inputType": "Asset:image",
+              "validators": [],
+              "help": ""
+            },
+            "title": {
+              "type": "string",
+              "required": false,
+              "default": "",
+              "title": "Final Slide Title",
+              "inputType": "Text",
+              "validators": [],
+              "help": "",
+              "translatable": true
+            },
+            "body": {
+              "type": "string",
+              "required": false,
+              "default": "",
+              "title": "Final Slide Body",
+              "inputType": "Text",
+              "validators": [],
+              "help": "",
+              "translatable": true
+            }
+          }
+        },
+        "_incorrect": {
+          "type": "object",
+          "required": true,
+          "title": "Final slide for incorrect answer",
+          "properties": {
+            "background": {
+              "type": "string",
+              "required": false,
+              "default": "",
+              "title": "Final slide background image for incorrect answer",
+              "inputType": "Asset:image",
+              "validators": [],
+              "help": ""
+            },
+            "icon": {
+              "type": "string",
+              "required": false,
+              "default": "",
+              "title": "Final slide icon for incorrect answer",
+              "inputType": "Asset:image",
+              "validators": [],
+              "help": ""
+            },
+            "title": {
+              "type": "string",
+              "required": false,
+              "default": "",
+              "title": "Final Slide Title",
+              "inputType": "Text",
+              "validators": [],
+              "help": "",
+              "translatable": true
+            },
+            "body": {
+              "type": "string",
+              "required": false,
+              "default": "",
+              "title": "Final Slide Body",
+              "inputType": "Text",
+              "validators": [],
+              "help": "",
+              "translatable": true
+            }
+          }
+        }
+      }
+    }
+  }
+}

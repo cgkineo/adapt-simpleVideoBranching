@@ -1,0 +1,29 @@
+{{import_globals}}
+<div class="component__inner svb__inner">
+  {{> component this}}
+
+  <div class="js-aria-target aria-label" role="region" tabindex="-1"></div>
+  <div class="component__target svb__target js-svb-target"></div>
+
+  {{#if _transcript}}
+  <div class="svb__transcript-container media__transcript-container">
+
+    <button class="svb__transcript-btn svb__transcript-btn-inline media__transcript-btn media__transcript-btn-inline js-media-inline-transcript-toggle" aria-expanded="false">
+      <span class="svb__transcript-btn-text media__transcript-btn-text">
+        {{{_transcript.inlineTranscriptButton}}}
+      </span>
+    </button>
+
+
+    <div class="svb__transcript-body-inline media__transcript-body-inline" role="region" >
+      <div class="svb__transcript-body-inline-inner media__transcript-body-inline-inner js-svb-transcript-body-inline"></div>
+      <button class="btn-text svb__transcript-skip-btn js-svb-transcript-skip-btn">
+        {{{_globals._components._simpleVideoBranching.skipToQuestionButton}}}
+      </button>
+      <button class="btn-text svb__results-btn js-svb-results-btn">
+        {{{_globals._components._simpleVideoBranching.skipToResultsButton}}}
+      </button>
+    </div>
+  </div>
+  {{/if}}
+</div>

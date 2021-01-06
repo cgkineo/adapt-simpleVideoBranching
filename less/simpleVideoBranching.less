@@ -1,0 +1,252 @@
+// Vanilla variable support
+// incase these vars are removed from Vanilla
+// --------------------------------------------------
+@font-color-inverted: white;
+@background: black;
+
+@item-margin: 0.5rem;
+@item-padding: 1rem;
+
+@btn-margin: 1rem;
+@btn-padding: 1rem;
+
+@icon-size: 1.5rem;
+
+// Global
+// --------------------------------------------------
+.simplevideobranching {
+
+  .media;
+
+  .js-svb-target {
+    position: relative;
+    margin-top: @item-padding;
+  }
+
+  .svb__questions-outer,
+  .svb__results-outer {
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .svb__questions-inner,
+  .svb__results-inner {
+    height: 100%;
+    padding: 4% 3%; //padding: 2%;
+    box-sizing: border-box;
+    background-color: fade(@background, 80%);
+  }
+
+  .results-slide-title {
+    margin-bottom: @item-title-margin;
+    color: @font-color-inverted;
+  }
+
+  .svb__questions-body,
+  .results-slide-body {
+    margin-bottom: @item-margin;
+    color: @font-color-inverted;
+  }
+}
+
+// Question
+// --------------------------------------------------
+.simplevideobranching {
+
+  .svb__questions-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+
+    // ie requires height property for flex support
+    // value gets overwritten by 'min-height' inline style
+    .ie & {
+      height: 1px;
+    }
+
+    @media (min-width: @device-width-large) {
+     padding: 6% 4%;
+    }
+  }
+
+  .svb__item {
+    position: relative;
+  }
+
+  .svb__item-input {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    z-index: -1;
+    .transform(translate(-50%, -50%));
+  }
+
+  .svb__item-label {
+    display: block;
+    z-index: 1;
+    color: @font-color-inverted;
+  }
+
+  .svb__item-label:not(.is-disabled) {
+    cursor: pointer;
+  }
+
+  .svb__item-state {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    .transform(translateY(-50%));
+
+    .dir-rtl & {
+      left: inherit;
+      right: 0;
+    }
+  }
+
+  // item radio icon
+  .svb__item-icon {
+    display: none;
+  }
+
+  .svb__answer-icon.is-radio .icon {
+    .icon-radio-unchecked;
+  }
+
+  .svb__item-label.is-selected .svb__answer-icon.is-radio .icon {
+    .icon-radio-checked;
+  }
+
+  .svb__widget:not(.is-complete) .svb__answer-icon {
+    display: block;
+  }
+
+  .svb__item-text {
+    padding: (@item-padding / 2) @item-padding (@item-padding / 2) (@icon-size + @item-padding);
+
+    .dir-rtl & {
+      padding-left: @item-padding;
+      padding-right: @icon-size + @item-padding;
+    }
+  }
+
+  .btn__feedback {
+    display: none;
+  }
+
+  .btn__replay {
+    width: calc(~'50% - @{btn-padding}');
+    margin-left: @btn-padding;
+
+    .dir-rtl & {
+      margin-left: inherit;
+      margin-right: @btn-padding;
+    }
+  }
+}
+
+// Results
+// --------------------------------------------------
+.simplevideobranching {
+  .svb__results-outer {
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .svb__results-inner {
+    padding: 4% 3%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    text-align: center;
+
+    @media (min-width: @device-width-large) {
+      padding: 6% 4%;
+    }
+  }
+
+  .results-slide-icon {
+    padding-top: 15%;
+    padding-bottom: 3%;
+
+    @media (max-width: @device-width-medium) {
+      padding-top: 0;
+      width: 5rem;
+      margin: 0 auto;
+    }
+
+    img {
+      min-width: auto; // base.less override
+      margin: auto;
+    }
+  }
+
+  .results-slide-retry-container {
+    margin-top: @btn-margin;
+  }
+
+  .svb__results-retry-btn {
+    width: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+
+    .icon;
+    .icon-video-replay;
+
+    &:before {
+      padding-right: 0.5rem;
+    }
+  }
+}
+
+// Transcript, skip to question/results btn
+// --------------------------------------------------
+.simplevideobranching  {
+  // only display transcript for video
+  &:not(.is-media) .svb__transcript-container {
+    display: none;
+  }
+
+  // hide 'skip to question' btn when question answered
+  &.is-answered .svb__transcript-skip-btn {
+    display: none;
+  }
+
+  // hide 'skip to results' btn until question answered
+  &:not(.is-answered) .svb__results-btn {
+    display: none;
+  }
+
+  .svb__transcript-skip-btn,
+  .svb__results-btn {
+    margin-top: @btn-margin;
+  }
+}
+
+// Play btn icon
+// copied from mep.less line 56+
+// --------------------------------------------------
+.mejs-container .mejs-overlay-button {
+  .icon;
+  .icon-video-play;
+}
+
+.mejs-container .mejs-overlay-button:before {
+  font-size: @icon-size * 2;
+
+  @media (min-width: @device-width-small) {
+    font-size: @icon-size * 3;
+  }
+}
