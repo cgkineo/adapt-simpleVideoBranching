@@ -1,22 +1,22 @@
 {
-  "name": "adapt-simpleVideoBranching",
-  "version": "0.1.2",
-  "framework": ">=5.5",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/cgkineo/adapt-simpleVideoBranching"
-  },
-  "issues": "",
-  "displayName" : "Simple Video Branching",
-  "component" : "simpleVideoBranching",
-  "description": "",
-  "main": "/js/adapt-simpleVideoBranching.js",
-  "keywords": [
-    "adapt-plugin",
-    "adapt-component"
-  ],
-  "pluginDependencies": {
-    "adapt-contrib-media": ">=5"
-  },
-  "license": "GPL-3.0"
+    "name": "adapt-simpleVideoBranching",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/cgkineo/adapt-simpleVideoBranching.git"
+    },
+    "framework": ">=5.5",
+    "version": "0.1.2",
+    "issues": "",
+    "displayName": "Simple Video Branching",
+    "component": "simpleVideoBranching",
+    "description": "",
+    "main": "/js/adapt-simpleVideoBranching.js",
+    "keywords": [
+        "adapt-plugin",
+        "adapt-component"
+    ],
+    "pluginDependencies": {
+        "adapt-contrib-media": ">=5"
+    },
+    "license": "GPL-3.0"
 }
