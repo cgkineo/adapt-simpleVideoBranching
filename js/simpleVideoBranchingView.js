@@ -3,7 +3,7 @@ define([
   'components/adapt-contrib-media/js/adapt-contrib-media'
 ], function(Adapt, Media) {
 
-  var VideoBranchingView = Media.view.extend({
+  const VideoBranchingView = Media.view.extend({
 
     started: false,
     ended: false,
@@ -38,7 +38,7 @@ define([
         }
       });
 
-      this.checkIfResetOnRevisit();
+      this.checkIfResetOnRevisit?.();
     },
 
     postRender: function() {
@@ -100,7 +100,7 @@ define([
       // stop the video from assuming focus on play.
       this.$('.mejs-mediaelement video').attr({
         'aria-hidden': 'true',
-        'tabindex': '-1'
+        tabindex: '-1'
       });
 
       this.$('.mejs-video').removeAttr('aria-label');
@@ -128,12 +128,12 @@ define([
     },
 
     storeVolume: function(e) {
-      var newVolume = e.target.muted ? 0 : e.target.volume;
+      const newVolume = e.target.muted ? 0 : e.target.volume;
       this.model.set('_volume', newVolume);
     },
 
     restoreVolume: function() {
-      var storedVolume = this.model.get('_volume');
+      const storedVolume = this.model.get('_volume');
       if (storedVolume || storedVolume === 0) {
         this.mediaElement.player.setVolume(storedVolume);
       }
