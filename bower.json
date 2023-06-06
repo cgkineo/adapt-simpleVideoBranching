@@ -9,6 +9,7 @@
     "issues": "",
     "displayName": "Simple Video Branching",
     "component": "simpleVideoBranching",
+    "targetAttribute": "_simpleVideoBranching",
     "description": "",
     "main": "/js/adapt-simpleVideoBranching.js",
     "keywords": [

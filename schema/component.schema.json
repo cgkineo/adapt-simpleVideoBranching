@@ -1,0 +1,463 @@
+{
+  "$anchor": "simpleVideoBranching-component",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "$merge": {
+    "source": {
+      "$ref": "component"
+    },
+    "with": {
+      "properties": {
+        "_supportedLayout": {
+          "type": "string",
+          "title": "Supported layout",
+          "default": "full-width",
+          "enum": [
+            "full-width",
+            "half-width",
+            "both"
+          ],
+          "_adapt": {
+            "editorOnly": true
+          }
+        },
+        "_isRandom": {
+          "type": "boolean",
+          "title": "Randomise answers?",
+          "default": false
+        },
+        "_allowRetryOnPass": {
+          "type": "boolean",
+          "title": "Allow learner to retry even if they answered correctly?",
+          "default": false
+        },
+        "_useClosedCaptions": {
+          "type": "boolean",
+          "title": "Use Closed Captions",
+          "default": false
+        },
+        "_playsinline": {
+          "type": "boolean",
+          "title": "Play videos inline on iOS",
+          "description": "If enabled, videos will play 'inline' on iPhones (the same way they do on iPads). Note that this feature is only available in iOS10 and above.",
+          "default": false
+        },
+        "_transcript": {
+          "type": "object",
+          "title": "Component Transcript Options",
+          "default": {},
+          "properties": {
+            "_setCompletionOnView": {
+              "type": "boolean",
+              "title": "Trigger completion?",
+              "description": "Whether to have this component mark as completed when the transcript is shown.",
+              "default": false
+            },
+            "_inlineTranscript": {
+              "type": "boolean",
+              "title": "Show Inline",
+              "default": true
+            },
+            "inlineTranscriptButton": {
+              "type": "string",
+              "title": "Inline Open Button",
+              "default": "",
+              "_adapt": {
+                "translatable": true
+              }
+            },
+            "inlineTranscriptCloseButton": {
+              "type": "string",
+              "title": "Inline Close Button",
+              "default": "",
+              "_adapt": {
+                "translatable": true
+              }
+            }
+          }
+        },
+        "instruction": {
+          "type": "string",
+          "title": "Instruction",
+          "default": "",
+          "_adapt": {
+            "translatable": true
+          }
+        },
+        "_playerOptions": {
+          "type": "object",
+          "title": "Player Options",
+          "description": "Optional object that can be used to customize the player",
+          "default": {
+            "features": [
+              "playpause",
+              "current",
+              "progress",
+              "duration",
+              "tracks",
+              "volume"
+            ],
+            "toggleCaptionsButtonWhenOnlyOne": true,
+            "alwaysShowControls": true,
+            "hideVideoControlsOnLoad": false
+          },
+          "_backboneForms": {
+            "type": "CodeEditor",
+            "mode": "json"
+          }
+        },
+        "_initialVideo": {
+          "type": "object",
+          "title": "Initial Video",
+          "description": "The settings for the initial video",
+          "required": [
+            "_media"
+          ],
+          "properties": {
+            "_media": {
+              "type": "object",
+              "title": "Media",
+              "properties": {
+                "mp4": {
+                  "type": "string",
+                  "isObjectId": true,
+                  "title": "MP4 Link",
+                  "description": "Link to an MP4 video",
+                  "_backboneForms": {
+                    "type": "Asset",
+                    "media": "video"
+                  }
+                },
+                "poster": {
+                  "type": "string",
+                  "isObjectId": true,
+                  "title": "Poster Link",
+                  "description": "Image displayed before the video is played",
+                  "_backboneForms": {
+                    "type": "Asset",
+                    "media": "image"
+                  }
+                },
+                "cc": {
+                  "type": "array",
+                  "title": "Closed Captions",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "srclang": {
+                        "type": "string",
+                        "title": "Language Code",
+                        "default": ""
+                      },
+                      "src": {
+                        "type": "string",
+                        "isObjectId": true,
+                        "title": "Caption File",
+                        "_backboneForms": {
+                          "type": "Asset",
+                          "media": "other"
+                        }
+                      }
+                    }
+                  }
+                },
+                "transcript": {
+                  "type": "string",
+                  "title": "Inline Transcript",
+                  "description": "Optional text appears below the video",
+                  "default": "",
+                  "_adapt": {
+                    "translatable": true
+                  },
+                  "_backboneForms": "TextArea"
+                }
+              }
+            }
+          }
+        },
+        "_question": {
+          "type": "object",
+          "title": "Question",
+          "required": [
+            "_options"
+          ],
+          "properties": {
+            "background": {
+              "type": "string",
+              "isObjectId": true,
+              "title": "Background Image",
+              "_backboneForms": {
+                "type": "Asset",
+                "media": "image"
+              }
+            },
+            "body": {
+              "type": "string",
+              "title": "Question Body",
+              "default": "",
+              "_adapt": {
+                "translatable": true
+              }
+            },
+            "_options": {
+              "type": "array",
+              "title": "Answers",
+              "description": "The possible answers available to the learner",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "text": {
+                    "type": "string",
+                    "title": "Answer Text",
+                    "description": "This text will display as the answer text",
+                    "default": "",
+                    "_adapt": {
+                      "translatable": true
+                    }
+                  },
+                  "_shouldBeSelected": {
+                    "type": "boolean",
+                    "title": "Correct answer?",
+                    "default": false
+                  },
+                  "feedback": {
+                    "type": "string",
+                    "title": "Answer-specific feedback",
+                    "default": "",
+                    "_adapt": {
+                      "translatable": true
+                    },
+                    "_backboneForms": "TextArea"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "_finalVideo": {
+          "type": "object",
+          "title": "Final Video",
+          "description": "The details for the final video",
+          "required": [
+            "_correct",
+            "_incorrect"
+          ],
+          "properties": {
+            "_isEnabled": {
+              "type": "boolean",
+              "title": "Show final video in this component?",
+              "description": "Controls whether you want to show the final video & results in this component - or further down the page using the Video Outcome component.",
+              "default": true
+            },
+            "_correct": {
+              "type": "object",
+              "title": "Final video for correct answer",
+              "required": [
+                "_media"
+              ],
+              "properties": {
+                "_media": {
+                  "type": "object",
+                  "title": "Media",
+                  "properties": {
+                    "mp4": {
+                      "type": "string",
+                      "isObjectId": true,
+                      "title": "MP4 Link",
+                      "description": "Link to an MP4 video",
+                      "_backboneForms": {
+                        "type": "Asset",
+                        "media": "video"
+                      }
+                    },
+                    "cc": {
+                      "type": "array",
+                      "title": "Closed Captions",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "srclang": {
+                            "type": "string",
+                            "title": "Language Code",
+                            "default": ""
+                          },
+                          "src": {
+                            "type": "string",
+                            "isObjectId": true,
+                            "title": "Caption File",
+                            "_backboneForms": {
+                              "type": "Asset",
+                              "media": "other"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "transcript": {
+                      "type": "string",
+                      "title": "Inline Transcript",
+                      "description": "Optional text appears below the video",
+                      "default": "",
+                      "_adapt": {
+                        "translatable": true
+                      },
+                      "_backboneForms": "TextArea"
+                    }
+                  }
+                }
+              }
+            },
+            "_incorrect": {
+              "type": "object",
+              "title": "Final video for incorrect answer",
+              "required": [
+                "_media"
+              ],
+              "properties": {
+                "_media": {
+                  "type": "object",
+                  "title": "Media",
+                  "properties": {
+                    "mp4": {
+                      "type": "string",
+                      "isObjectId": true,
+                      "title": "MP4 Link",
+                      "description": "Link to an MP4 video",
+                      "_backboneForms": {
+                        "type": "Asset",
+                        "media": "video"
+                      }
+                    },
+                    "cc": {
+                      "type": "array",
+                      "title": "Closed Captions",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "srclang": {
+                            "type": "string",
+                            "title": "Language Code",
+                            "default": ""
+                          },
+                          "src": {
+                            "type": "string",
+                            "isObjectId": true,
+                            "title": "Caption File",
+                            "_backboneForms": {
+                              "type": "Asset",
+                              "media": "other"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "transcript": {
+                      "type": "string",
+                      "title": "Inline Transcript",
+                      "description": "Optional text appears below the video",
+                      "default": "",
+                      "_adapt": {
+                        "translatable": true
+                      },
+                      "_backboneForms": "TextArea"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "_finalSlide": {
+          "type": "object",
+          "title": "Final Slide",
+          "required": [
+            "_correct",
+            "_incorrect"
+          ],
+          "properties": {
+            "_correct": {
+              "type": "object",
+              "title": "Final slide for correct answer",
+              "properties": {
+                "background": {
+                  "type": "string",
+                  "isObjectId": true,
+                  "title": "Final slide background image for correct answer",
+                  "_backboneForms": {
+                    "type": "Asset",
+                    "media": "image"
+                  }
+                },
+                "icon": {
+                  "type": "string",
+                  "isObjectId": true,
+                  "title": "Final slide icon for correct answer",
+                  "_backboneForms": {
+                    "type": "Asset",
+                    "media": "image"
+                  }
+                },
+                "title": {
+                  "type": "string",
+                  "title": "Final Slide Title",
+                  "default": "",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                },
+                "body": {
+                  "type": "string",
+                  "title": "Final Slide Body",
+                  "default": "",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                }
+              }
+            },
+            "_incorrect": {
+              "type": "object",
+              "title": "Final slide for incorrect answer",
+              "properties": {
+                "background": {
+                  "type": "string",
+                  "isObjectId": true,
+                  "title": "Final slide background image for incorrect answer",
+                  "_backboneForms": {
+                    "type": "Asset",
+                    "media": "image"
+                  }
+                },
+                "icon": {
+                  "type": "string",
+                  "isObjectId": true,
+                  "title": "Final slide icon for incorrect answer",
+                  "_backboneForms": {
+                    "type": "Asset",
+                    "media": "image"
+                  }
+                },
+                "title": {
+                  "type": "string",
+                  "title": "Final Slide Title",
+                  "default": "",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                },
+                "body": {
+                  "type": "string",
+                  "title": "Final Slide Body",
+                  "default": "",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
