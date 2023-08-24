@@ -1,0 +1,104 @@
+{
+  "$anchor": "simpleVideoBranching-course",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "$patch": {
+    "source": {
+      "$ref": "course"
+    },
+    "with": {
+      "properties": {
+        "_globals": {
+          "type": "object",
+          "default": {},
+          "properties": {
+            "_extensions": {
+              "type": "object",
+              "default": {},
+              "properties": {
+                "_simpleVideoBranching": {
+                  "type": "object",
+                  "default": {},
+                  "properties": {
+                    "ariaRegion": {
+                      "type": "string",
+                      "title": "Aria region",
+                      "default": "Video scenario",
+                      "_adapt": {
+                        "translatable": true
+                      }
+                    },
+                    "ariaRegionVideo": {
+                      "type": "string",
+                      "title": "Aria region video",
+                      "default": "Watch the video then answer the question that follows. Select the skip to transcript button if you would prefer a transcript of the video.",
+                      "_adapt": {
+                        "translatable": true
+                      }
+                    },
+                    "ariaRegionResults": {
+                      "type": "string",
+                      "title": "Aria region results",
+                      "default": "Read your results below.",
+                      "_adapt": {
+                        "translatable": true
+                      }
+                    },
+                    "ariaRegionQuestion": {
+                      "type": "string",
+                      "title": "Aria region question",
+                      "default": "Answer the following multiple choice question.",
+                      "_adapt": {
+                        "translatable": true
+                      }
+                    },
+                    "skipToResultsButton": {
+                      "type": "string",
+                      "title": "Skip to results button",
+                      "default": "Skip to results",
+                      "_adapt": {
+                        "translatable": true
+                      }
+                    },
+                    "skipToQuestionButton": {
+                      "type": "string",
+                      "title": "Skip to question button",
+                      "default": "Skip to question",
+                      "_adapt": {
+                        "translatable": true
+                      }
+                    },
+                    "replayVideoButton": {
+                      "type": "string",
+                      "title": "Replay video button",
+                      "default": "Replay Video",
+                      "_adapt": {
+                        "translatable": true
+                      }
+                    },
+                    "resultSlideRetryButton": {
+                      "type": "string",
+                      "title": "Result slide retry button",
+                      "default": "Retry",
+                      "_adapt": {
+                        "translatable": true
+                      }
+                    },
+                    "feedbackPopupTitle": {
+                      "type": "string",
+                      "title": "Feedback popup title",
+                      "default": "Feedback",
+                      "_adapt": {
+                        "translatable": true
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
