@@ -18,7 +18,7 @@ define([
       'click .js-svb-transcript-skip-btn': 'skipToQuestionButtonClicked',
       'click .js-svb-results-btn': 'onFinalVideoEnded',
       'click .js-retry-btn': 'onRetryClick'
-    }, Media.view.prototype.events),
+    }, Media.view.prototype.events()),
 
     preRender: function() {
       this.listenTo(Adapt, {
