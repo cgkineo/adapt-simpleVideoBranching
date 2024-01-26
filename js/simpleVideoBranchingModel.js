@@ -28,8 +28,14 @@ define([
         }
       });
 
-      // totals are useful to have too
+      // totals are useful to have too, set initial player state attributes
       this.set({
+        _isMediaEnded: false,
+        _isMediaPlaying: false,
+        _media: {
+          cc: [],
+          mp4: ' '// prevent console warning 'No media is selected in components.json'
+        },
         _mediaCount: mediaIndex,
         _questionCount: questionIndex
       });

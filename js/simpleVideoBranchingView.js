@@ -18,7 +18,7 @@ define([
       'click .js-svb-transcript-skip-btn': 'skipToQuestionButtonClicked',
       'click .js-svb-results-btn': 'onFinalVideoEnded',
       'click .js-retry-btn': 'onRetryClick'
-    }, Media.view.prototype.events),
+    }, Media.view.prototype.events()),
 
     preRender: function() {
       this.listenTo(Adapt, {
@@ -28,15 +28,6 @@ define([
       });
 
       _.bindAll(this, 'onMediaElementPlay', 'onMediaElementPause', 'onMediaElementEnded', 'onMediaElementTimeUpdate', 'onMediaElementSeeking');
-
-      // set initial player state attributes
-      this.model.set({
-        _isMediaEnded: false,
-        _isMediaPlaying: false,
-        _media: {
-          mp4: ' '// prevent console warning 'No media is selected in components.json'
-        }
-      });
 
       this.checkIfResetOnRevisit?.();
     },
