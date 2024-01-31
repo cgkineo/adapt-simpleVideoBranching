@@ -155,7 +155,7 @@
                         "title": "Caption File",
                         "_backboneForms": {
                           "type": "Asset",
-                          "media": "other"
+                          "media": "text"
                         }
                       }
                     }
@@ -287,7 +287,7 @@
                             "title": "Caption File",
                             "_backboneForms": {
                               "type": "Asset",
-                              "media": "other"
+                              "media": "text"
                             }
                           }
                         }
@@ -345,7 +345,7 @@
                             "title": "Caption File",
                             "_backboneForms": {
                               "type": "Asset",
-                              "media": "other"
+                              "media": "text"
                             }
                           }
                         }
