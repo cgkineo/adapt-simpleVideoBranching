@@ -5,7 +5,7 @@
         "url": "git://github.com/cgkineo/adapt-simpleVideoBranching.git"
     },
     "framework": ">=5.5",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "issues": "",
     "displayName": "Simple Video Branching",
     "component": "simpleVideoBranching",
