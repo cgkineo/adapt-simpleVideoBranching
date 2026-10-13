@@ -1,5 +1,8 @@
 # adapt-simpleVideoBranching  
 
+> [!WARNING]
+> **Deprecated.** This plugin is no longer maintained and doesn't work with [adapt-contrib-media](https://github.com/adaptlearning/adapt-contrib-media) v7 or later. For video branching, use [adapt-contrib-media](https://github.com/adaptlearning/adapt-contrib-media) with [adapt-contrib-branching](https://github.com/adaptlearning/adapt-contrib-branching) and a question component such as [adapt-contrib-mcq](https://github.com/adaptlearning/adapt-contrib-mcq). See [#22](https://github.com/cgkineo/adapt-simpleVideoBranching/issues/22).
+
 **Simple Video Branching** is a *question component* that presents the learner with a video, followed by a question about that video - optionally followed by two 'outcome' videos - one for a correct answer, one for an incorrect answer - ending with a 'results' screen. The 'outcome' videos and results can also be shown further down the page by linking a videoOutcome component to this one.
 
 ## Installation
